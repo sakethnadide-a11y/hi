@@ -35,7 +35,7 @@ function handleYesClick() {
   createSparkles();
   setTimeout(() => {
     window.location.href = "yes.html";
-  }, 800);
+  }, 3000);
 }
 
 function createSparkles() {
@@ -55,3 +55,4 @@ function createSparkles() {
     }, 800);
   }
 }
+
