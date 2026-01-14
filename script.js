@@ -36,22 +36,3 @@ function handleYesClick() {
 }
 
 
-function createSparkles() {
-  const container = document.getElementById("sparkle-container");
-
-  for (let i = 0; i < 40; i++) {
-    const sparkle = document.createElement("div");
-    sparkle.classList.add("sparkle");
-
-    sparkle.style.left = Math.random() * window.innerWidth + "px";
-    sparkle.style.top = Math.random() * window.innerHeight + "px";
-
-    container.appendChild(sparkle);
-
-    setTimeout(() => {
-      sparkle.remove();
-    }, 800);
-  }
-}
-
-
