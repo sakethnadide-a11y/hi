@@ -19,8 +19,8 @@
 
     .wrapper {
       text-align: center;
-      z-index: 2;
       position: relative;
+      z-index: 2;
     }
 
     h1 {
@@ -41,29 +41,44 @@
       border-radius: 12px;
     }
 
-    /* ✨ Sparkle magic ✨ */
-    .sparkle {
+    /* 💗 Floating Hearts */
+    .heart {
       position: absolute;
-      width: 15px;
-      height: 15px;
-      background: radial-gradient(circle, #fff, #ff9ad5, #ff4da6);
-      border-radius: 50%;
-      box-shadow: 0 0 12px #fff, 0 0 20px #ff9ad5;
-      animation: sparkleMove 1.5s linear forwards;
+      width: 20px;
+      height: 20px;
+      background: #ff4d88;
+      transform: rotate(45deg);
+      animation: floatUp 2s ease-in forwards;
       pointer-events: none;
     }
 
-    @keyframes sparkleMove {
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ff4d88;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes floatUp {
       0% {
-        transform: scale(0.2);
-        opacity: 1;
-      }
-      50% {
-        transform: scale(1);
+        transform: scale(0.5) translateY(0) rotate(45deg);
         opacity: 1;
       }
       100% {
-        transform: scale(0.1) translateY(-120px);
+        transform: scale(1.2) translateY(-180px) rotate(45deg);
         opacity: 0;
       }
     }
@@ -83,24 +98,26 @@
     </div>
   </div>
 
-<script>
-function createShinySparkles() {
-  for (let i = 0; i < 60; i++) {
-    const sparkle = document.createElement("div");
-    sparkle.className = "sparkle";
+  <script>
+    function createHearts() {
+      for (let i = 0; i < 35; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
 
-    sparkle.style.left = Math.random() * window.innerWidth + "px";
-    sparkle.style.top = Math.random() * window.innerHeight + "px";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.top = window.innerHeight + "px";
 
-    document.body.appendChild(sparkle);
+        document.body.appendChild(heart);
 
-    setTimeout(() => sparkle.remove(), 1500);
-  }
-}
+        setTimeout(() => {
+          heart.remove();
+        }, 2000);
+      }
+    }
 
-// Auto run when page loads
-window.onload = createShinySparkles;
-</script>
+    // Run hearts when page opens
+    window.onload = createHearts;
+  </script>
 
 </body>
 </html>
