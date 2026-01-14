@@ -32,11 +32,9 @@ function handleNoClick() {
 }
 
 function handleYesClick() {
-  createSparkles();
-  setTimeout(() => {
-    window.location.href = "yes.html";
-  }, 3000);
+  window.location.href = "yes.html";
 }
+
 
 function createSparkles() {
   const container = document.getElementById("sparkle-container");
@@ -55,4 +53,5 @@ function createSparkles() {
     }, 800);
   }
 }
+
 
