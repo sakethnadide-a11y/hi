@@ -3,6 +3,7 @@
 <head>
   <title>YAY</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body {
       background: #ffe6f0;
@@ -13,16 +14,18 @@
       font-family: Arial;
       text-align: center;
       margin: 0;
-      padding: 20px;
+      overflow: hidden;
     }
 
     .wrapper {
       text-align: center;
+      z-index: 2;
+      position: relative;
     }
 
     h1 {
       color: #ff2d75;
-      font-size: 28px;
+      font-size: 30px;
       margin-bottom: 20px;
     }
 
@@ -36,12 +39,39 @@
     .image-row img {
       width: 120px;
       border-radius: 12px;
-      margin-top: 10px;
+    }
+
+    /* ✨ Sparkle magic ✨ */
+    .sparkle {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: radial-gradient(circle, #fff, #ff9ad5, #ff4da6);
+      border-radius: 50%;
+      box-shadow: 0 0 12px #fff, 0 0 20px #ff9ad5;
+      animation: sparkleMove 1.5s linear forwards;
+      pointer-events: none;
+    }
+
+    @keyframes sparkleMove {
+      0% {
+        transform: scale(0.2);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(0.1) translateY(-120px);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 
 <body>
+
   <div class="wrapper">
     <h1>YAY! I love you soooo muchh mera kucchu pucchu 🥰🥰</h1>
 
@@ -52,7 +82,25 @@
       <img src="./4.jpeg">
     </div>
   </div>
+
+<script>
+function createShinySparkles() {
+  for (let i = 0; i < 60; i++) {
+    const sparkle = document.createElement("div");
+    sparkle.className = "sparkle";
+
+    sparkle.style.left = Math.random() * window.innerWidth + "px";
+    sparkle.style.top = Math.random() * window.innerHeight + "px";
+
+    document.body.appendChild(sparkle);
+
+    setTimeout(() => sparkle.remove(), 1500);
+  }
+}
+
+// Auto run when page loads
+window.onload = createShinySparkles;
+</script>
+
 </body>
 </html>
-
-
